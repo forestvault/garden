@@ -1,0 +1,158 @@
+body {
+  color: white;
+  font-size: 2rem;
+}
+
+a, a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+input {
+  color: white;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.active {
+  text-decoration: underline;
+}
+
+  /* The Box Style */
+  .app-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 120px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      border-radius: 1rem;
+      transition: transform 0.2s, filter 0.2s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      text-align: center;
+      padding: 10px;
+  }
+
+  /* Interaction Effects */
+  .app-box:hover {
+      transform: translateY(-5px);
+      filter: brightness(1.2);
+  }
+
+  /* Responsive adjustments for small screens */
+  @media (max-width: 480px) {
+      .app-box {
+          width: 100%; /* Full width on phones */
+          height: 80px;
+      }
+  }
+
+  div h1 {
+    color: white;
+    font-size: 4rem;
+    font-weight: bolder;
+    width: 100%;
+    text-align: center;
+  }
+
+  .dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.dialog-alert {
+    border-radius: 1em;
+    border-color: var(--color-green-300);
+    border-width: 2px;
+    background-color: black;
+    padding: 1em;
+    color: white;
+}
+
+.dialog-alert-title {
+  background-color: var(--color-slate-700);
+    padding: 4px;
+}
+
+.dialog-confirm-title {
+    color: red;
+    background-color: var(--color-green-700);
+    padding: 4px;
+}
+
+.dialog-error {
+    border-radius: 1em;
+    border-color: red;
+    border-width: 2px;
+    background-color: black;
+    padding: 1em;
+    color: white;
+}
+
+.dialog-alert-error {
+    color: red;
+    background-color: black;
+    padding: 4px;
+}
+
+option, select {
+  border: 1px solid var(--color-slate-700);
+  color: bwhite;
+  background-color: black;
+}
+
+div label {
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
+  width: 33%;
+}
+

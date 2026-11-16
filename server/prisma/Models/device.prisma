@@ -1,0 +1,21 @@
+enum DeviceType {
+    GENERIC
+    LIGHT
+    TEMPERATURE
+    HUMIDITY
+    MOTION
+    SENSOR
+    ACTUATOR
+    CAMERA
+    SWITCH
+    COMPUTER
+}
+
+model Device {
+    id Int @id @default(autoincrement())
+    name String
+    manufacturer String? @default("unknown")
+    ieeeAddress String? @unique
+    type DeviceType @default(GENERIC)
+    zones Zone[]
+}
