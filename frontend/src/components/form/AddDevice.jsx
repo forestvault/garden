@@ -16,6 +16,7 @@ const AddDevice = ({ onAddDevice, deviceTypes }) => {
     const [deviceName, setDeviceName] = useState('');
     const [selectedDeviceType, setSelectedDeviceType] = useState(Array.isArray(deviceTypes) ? deviceTypes[0] : '');
     const [ieeeAddress, setIeeeAddress] = useState('');
+    const [manufacturerName, setManufacturerName] = useState('');
     const { t } = useTranslation();
 
     const handleAddDevice = async () => {
@@ -24,11 +25,12 @@ const AddDevice = ({ onAddDevice, deviceTypes }) => {
             return;
         }
 
-        DeviceService.addDevice(deviceName, selectedDeviceType, ieeeAddress, (e)=>{
+        DeviceService.addDevice(deviceName, selectedDeviceType, ieeeAddress, manufacturerName, (e)=>{
             onAddDevice(e.newDevice);
             setDeviceName('');
             setSelectedDeviceType('');
             setIeeeAddress('');
+            setManufacturerName('');
         });
     };
 
@@ -51,6 +53,15 @@ const AddDevice = ({ onAddDevice, deviceTypes }) => {
                     placeholder="IEEE Address"
                     value={ieeeAddress}
                     onChange={(e) => setIeeeAddress(e.target.value)}
+                />
+            </span>
+            <span className="flex">
+                <label>{t(Keys.DEVICE.MANUFACTURER_NAME)}:</label>
+                <input
+                    type="text"
+                    placeholder={t(Keys.DEVICE.MANUFACTURER_NAME)}
+                    value={manufacturerName}
+                    onChange={(e) => setManufacturerName(e.target.value)}
                 />
             </span>
             <span className="flex">
