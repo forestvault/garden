@@ -21,6 +21,7 @@ const DeviceDetails = ({ device, hide, onUpdate, deviceTypes, onAddZoneToDevice,
     const [name, setName] = useState(currentDevice.name);
     const [deviceType, setTypeDevice] = useState(currentDevice.type);
     const [ieeeAddress, setIeeeAddress] = useState(currentDevice.ieeeAddress);
+    const [manufacturerName, setManufacturerName] = useState(currentDevice.manufacturer);
     const [addZoneVisible, setAddZoneVisible] = useState(false);
     const [allZones, setAllZones] = useState([]);
     const { t } = useTranslation();
@@ -32,7 +33,7 @@ const DeviceDetails = ({ device, hide, onUpdate, deviceTypes, onAddZoneToDevice,
     }, []);
 
     const updateDevice = () => {
-        DeviceService.updateDevice(currentDevice.id, name, deviceType, ieeeAddress, onUpdate);
+        DeviceService.updateDevice(currentDevice.id, name, deviceType, ieeeAddress, manufacturerName, onUpdate);
         hide();
     };
 
@@ -68,6 +69,10 @@ const DeviceDetails = ({ device, hide, onUpdate, deviceTypes, onAddZoneToDevice,
                 <div className="flex flex-row">
                     <label>{t(Keys.DEVICE.IEEE_ADDRESS)}:</label>
                     <input type="text" value={ieeeAddress} onChange={(e) => setIeeeAddress(e.target.value)} className="border-1" />
+                </div>
+                <div className="flex flex-row">
+                    <label>{t(Keys.DEVICE.MANUFACTURER_NAME)}:</label>
+                    <input type="text" value={manufacturerName} onChange={(e) => setManufacturerName(e.target.value)} className="border-1" />
                 </div>
                 <div className="flex flex-col">
                     <div className="flex flex-row">

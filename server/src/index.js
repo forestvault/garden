@@ -1,5 +1,8 @@
 import express from 'express';
 import routes from './endpoints/index.js';
+import listeners from './listeners/index.cjs';
+
+import mqttServer from './hal/mqtt.cjs';
 
 import cors from 'cors';
 const app = express();
@@ -10,21 +13,24 @@ app.use(cors());
 
 app.use(express.json());
 
-// no cache
-/*BreederRouter.use((request, response, next) => {
-    response.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
-    response.setHeader('Pragma', 'no-cache');
-    response.setHeader('Expires', '0');
-    next();
-});*/
-
 //========
 // Routes
 app.use(`${BASE}/api`, routes);
 
-/*app.use(`${BASE}/api/settings`,  settingsRouter);
-app.use(`${BASE}/api/categories`, categoriesRouter);*/
+/*
+ * Default message listener
+ */
+const onMessage=(topic, message)=>{
+  console.log('JSON message', message);
+}
 
+// Register all protocol based message listeners
+mqttServer.registerListener(listeners.getListners());
+
+// connect  mqtt
+mqttServer.connect(onMessage);
+
+// Strart server.
 app.listen(port, () => {
   console.log(`📡 Server running smoothly on http://0.0.0.0:${port}`);
 });

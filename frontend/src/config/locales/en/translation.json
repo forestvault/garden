@@ -76,5 +76,6 @@
     "DEVICE_CONFIRM_DELETE_INFO" : "This action will permanently delete the device_",
     "DEVICE_CONFIRM_DELETE_CONFIRM" : "Are you sure you want to proceed?",
     "DEVICE_CONFIRM_DELETE_PROCEED" : "Proceed with device deletion",
-    "DEVICE_IEEE_ADDRESS" : "IEEE Address"
+    "DEVICE_IEEE_ADDRESS" : "IEEE Address",
+    "DEVICE_MANUFACTURER_NAME" : "Manufacturer"
 }

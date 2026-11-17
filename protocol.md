@@ -1,0 +1,3 @@
+# Message Protocol
+- messageType
+- message

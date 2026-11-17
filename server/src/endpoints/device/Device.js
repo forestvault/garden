@@ -47,13 +47,14 @@ import { DeviceType } from '@prisma/client';
     })
     deviceRouter.post('/', async (req, res) => {
         try {
-            const { name, type, ieeeAddress } = req.body;
-            console.log('Creating device with name:', name, 'type:', type, 'ieeeAddress:', ieeeAddress);
+            const { name, type, ieeeAddress, manufacturerName } = req.body;
+            console.log('Creating device with name:', name, 'type:', type, 'ieeeAddress:', ieeeAddress, 'manufacturerName:', manufacturerName);
             const newDevice = await prisma.device.create({
                 data: {
                     name: name,
                     type: type,
-                    ieeeAddress: ieeeAddress
+                    ieeeAddress: ieeeAddress,
+                    manufacturer: manufacturerName
                 }
             })
             console.log(newDevice);
@@ -68,7 +69,7 @@ import { DeviceType } from '@prisma/client';
     });
     deviceRouter.put('/', async (request, response)=>{
         try {
-            const { id, name, type, ieeeAddress } = request.body;
+            const { id, name, type, ieeeAddress, manufacturerName } = request.body;
             const did = parseInt(id);
             const parsedIeeeAddress = (ieeeAddress);
             const ud = await prisma.device.update({
@@ -78,7 +79,11 @@ import { DeviceType } from '@prisma/client';
                 data: {
                     name : name,
                     type : type,
-                    ieeeAddress : parsedIeeeAddress
+                    ieeeAddress : parsedIeeeAddress,
+                    manufacturer: manufacturerName
+                },
+                include: {
+                    zones : true
                 }
             });
             console.log('device updated', ud);

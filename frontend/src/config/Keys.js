@@ -71,6 +71,7 @@ const Keys = {
         ZONE : "DEVICE_ZONE",
         STATUS : "DEVICE_STATUS",
         IEEE_ADDRESS : "DEVICE_IEEE_ADDRESS",
+        MANUFACTURER_NAME : "DEVICE_MANUFACTURER_NAME",
     },
 }
 export default Keys;
