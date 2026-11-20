@@ -9,6 +9,7 @@ import Settings from './pages/settings.jsx';
 import About from './pages/about.jsx';
 import DialogProvider from './context/Dialog.jsx';
 import './config/i18n.js';
+import Device from './pages/device.jsx';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/zone" element={<Zone />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/about" element={<About />} />
+          <Route path="/device/:deviceId" element={<Device />} />
         </Route>
       </Routes>
     </BrowserRouter>

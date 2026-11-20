@@ -22,8 +22,15 @@ import { DeviceType } from '@prisma/client';
     deviceRouter.get('/:id', async (req, res) => {
         try {
             const deviceId = req.params.id;
-            const device = {}; // Replace with actual logic to fetch a device by ID
-            return res.status(200).json(device);
+            const device = await prisma.device.findFirst({
+                where: {
+                    id: Number(deviceId)
+                }
+            })
+            return res.status(200).json({
+                status: 'ok',
+                device: device
+            });
         } catch (error) {
             return res.status(500).json({ error: 'Failed to fetch device' });
         }

@@ -1,6 +1,7 @@
-import { IoMdSettings, IoMdTrash } from "react-icons/io";
+import { IoMdDocument, IoMdSettings, IoMdTrash } from "react-icons/io";
 import Status from "../Status";
 import DeviceIcon from "./DeviceIcon";
+import { Link } from "react-router-dom";
 
 /*
  * Device row component.
@@ -13,6 +14,9 @@ import DeviceIcon from "./DeviceIcon";
  * onDelete - Function for deleting/unregistering device
  */
 const DeviceRow=({device, openSettings, onDelete})=>{
+    const GoTo=()=>{
+        window.location=`/device/${device.id}`;
+    }
     return (<li key={'device-'+device.id} className="flex items-center gap-2 hover:bg-sky-700">
         <Status status={device.online} />
         <DeviceIcon deviceType={device.type} />
@@ -25,6 +29,9 @@ const DeviceRow=({device, openSettings, onDelete})=>{
         <IoMdTrash 
             onClick={onDelete}
             className="cursor-pointer" />
+        <IoMdDocument 
+            onClick={()=>{GoTo()}}
+            className="color-white cursor-pointer" />
     </li>)
 }
 export default DeviceRow;

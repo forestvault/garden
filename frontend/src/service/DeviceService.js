@@ -22,7 +22,7 @@ const DeviceService={
     */
     device:function(id, onRetrieve) {
         axios.get(DEVICE_URL + id)
-        .then(response => Dashcallback(onRetrieve));
+        .then(response => DashCallback(response, onRetrieve, true));
     },
     /*
     * Retrieves all devices.
